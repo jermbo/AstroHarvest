@@ -18,10 +18,10 @@ The game needs a compelling narrative hook and world-building foundation to guid
 - **Requirement**: Clear setting, society, and context that supports all game mechanics
 - **Challenge**: Create rich world-building without overwhelming the core gameplay
 
-### 3. Prestige System Integration
+### 3. Long-term Story Progression
 
-- **Problem**: Need meaningful progression that carries forward between playthroughs
-- **Requirement**: Story-based progression that makes subsequent playthroughs feel different
+- **Problem**: Need meaningful progression that creates lasting impact on the world
+- **Requirement**: Story-based progression that affects the New Eden colony and surrounding areas
 - **Challenge**: Balance progression benefits with maintaining challenge and engagement
 
 ### 4. Town/Settlement Context
@@ -90,23 +90,23 @@ The game needs a compelling narrative hook and world-building foundation to guid
 - **Communication**: How the lab stays connected to the broader world
 - **Isolation**: How the lab's remote location affects gameplay
 
-## Prestige System Requirements
+## Long-term Story Progression Requirements
 
-### 1. Inheritance Mechanics
+### 1. Colony Development Mechanics
 
-- **Legacy Items**: What gets passed down from previous playthroughs
-- **Knowledge Transfer**: How research and technology knowledge carries forward
-- **Resource Inheritance**: What materials, credits, or components are inherited
-- **Unlock Progression**: How previous playthroughs unlock new starting options
+- **Infrastructure Growth**: How the New Eden colony develops over time
+- **Community Impact**: How player actions affect colony prosperity and development
+- **Technology Sharing**: How research benefits spread to the broader community
+- **Leadership Progression**: How players become leaders in the agricultural community
 
 ### 2. Story Progression
 
-- **Narrative Continuity**: How the story continues across playthroughs
-- **Character Development**: How the player character grows and changes
-- **World Evolution**: How the broader world changes based on previous actions
-- **Legacy Impact**: How previous playthroughs affect the current world state
+- **Narrative Continuity**: How the story evolves over months and years of play
+- **Character Development**: How the player character grows from novice to agricultural leader
+- **World Evolution**: How the broader world changes based on player achievements
+- **Legacy Impact**: How player actions create lasting change in the agricultural sector
 
-### 3. Mechanical Benefits
+### 3. Long-term Benefits
 
 - **Starting Resources**: Extra credits, materials, or components
 - **Unlocked Technology**: Access to previously researched technologies
@@ -125,10 +125,10 @@ The game needs a compelling narrative hook and world-building foundation to guid
 - **Requirement**: All game systems feel consistent with the established world
 - **Success**: No jarring inconsistencies between story and gameplay mechanics
 
-### 3. Prestige Engagement
+### 3. Long-term Engagement
 
-- **Requirement**: Prestige system feels meaningful and rewarding
-- **Success**: Players actively work toward prestige goals and feel accomplished when achieved
+- **Requirement**: Long-term progression feels meaningful and rewarding
+- **Success**: Players actively work toward long-term goals and feel accomplished when achieved
 
 ### 4. Expansion Potential
 

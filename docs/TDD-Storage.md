@@ -2,7 +2,7 @@
 
 ## Goals
 
-- Offline-first persistence (IndexedDB preferred; LocalStorage fallback for small data).
+- Offline-first persistence using IndexedDB for all data storage.
 - Versioned schema with simple migrations.
 - Data-driven content (JSON catalogs) separate from save state.
 

@@ -53,6 +53,8 @@
 - **Plot 4-6**: Cost 20, 40, 80 credits respectively
 - **Basic Tools**: HoeBot-9000 (25 credits), Watering Can (15 credits)
 - **First Station**: Bio-Processor (electronic components×8, power cells×4, minerals×2)
+- **Level Requirements**: Plot 4+ requires level 3, Plot 5+ requires level 5, Plot 6+ requires level 8
+- **XP Sources**: 2-4 XP per harvest, 4-8 XP per craft, 1-3 XP per maintenance task
 
 ### Mid Game (30 minutes - 2 hours)
 
@@ -226,7 +228,7 @@
 
 ### Long-term Progression
 
-- **Prestige System**: Reset progress for permanent bonuses
+- **Long-term Progression**: Deep, meaningful progression that rewards sustained play over months and years
 - **Mastery Levels**: Deep progression within existing systems
 - **Seasonal Content**: Limited-time crops and recipes
 - **Community Features**: Trading, competitions, shared goals

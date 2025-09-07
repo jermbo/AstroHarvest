@@ -158,6 +158,17 @@ Target platform: **Web (mobile-first, offline by default)**.
 
 ## 6. Progression & Timing
 
+### Player Progression System
+
+- **XP Sources**: 2-4 XP per harvest, 4-8 XP per craft, 1-3 XP per maintenance task, 10-50 XP per research
+- **Level Requirements**: Every 3-5 levels unlock new crops, every 5-7 levels unlock new bots, every 8-10 levels unlock new rooms
+- **Skill Trees**: Research categories (Bot Technology, Farm Infrastructure, Crop Science, Automation, Planetary Expansion)
+- **Achievement System**: Harvesting, crafting, bot management, lab maintenance, research, collection, efficiency achievements
+- **Long-term Progression**: Deep, meaningful progression that rewards sustained play over months and years
+- **Mastery System**: Deep specialization in crop mastery, bot mastery, crafting mastery, research mastery, maintenance mastery
+
+### Crop & Crafting Timing
+
 - **Early Crops**: 3–5 min growth (quick feedback).
 - **Mid Crops**: 30–60 min growth (idle loop).
 - **Advanced Crops**: Multi-hour growth (future expansion).
@@ -185,12 +196,28 @@ Target platform: **Web (mobile-first, offline by default)**.
   - “Plasmato” crop: tomato that glows faintly radioactive.
   - NPC: Zorbulon the Pickle Baron, demanding weird goods.
 
-## 9. Technical Notes
+## 9. Game Challenges & Lab Maintenance
 
-- **Tech stack**: HTML, CSS, JavaScript, Pixi.js.
-- **Save system**: IndexedDB (offline-first).
-- **UI**: Touch-friendly, bright retro buttons.
-- **Data-driven**: Crops, recipes, and tools defined in JSON for easy expansion.
+### Lab Maintenance as Core Gameplay
+
+- **System Failures**: Bots break down, crops fail, systems malfunction - these create engaging challenges
+- **Recovery Gameplay**: Players repair systems, restore power, fix equipment through strategic gameplay
+- **Resource Gathering**: Maintenance tasks provide materials for crafting and upgrades
+- **Progressive Difficulty**: Maintenance becomes more complex and rewarding as players advance
+
+### Player Mistake Recovery
+
+- **Resource Recovery**: Players can recover from costly mistakes through sell-back systems and resource exchange
+- **Strategic Learning**: Mistakes become learning opportunities with clear recovery paths
+- **Forgiveness Systems**: Fair recovery options that don't punish players harshly
+- **Second Chances**: Multiple ways to recover from poor decisions
+
+### Game Performance Experience
+
+- **Smooth Gameplay**: Game runs smoothly on mobile devices for extended play sessions
+- **Battery Efficiency**: Players can enjoy long gaming sessions without draining device battery
+- **Offline Play**: Full game functionality without internet connection
+- **Cross-Device Continuity**: Seamless experience across different devices
 
 ## 10. User Experience & Interface Design
 
@@ -281,19 +308,32 @@ Target platform: **Web (mobile-first, offline by default)**.
 
 ## 14. Onboarding & Tutorial Design
 
-### First-Time User Experience
+### Progressive Tutorial System (8 Phases)
 
-1. **Welcome Screen**: Brief game concept explanation and family story introduction
-2. **Interactive Tutorial**: Guided first lab maintenance and crop planting
-3. **Progressive Hints**: Contextual tooltips for new features
-4. **Safe Learning**: No penalties for tutorial mistakes
+1. **Welcome & Setup (0-2 min)**: Game concept, character creation, lab inheritance, HELIX introduction
+2. **Basic Lab Navigation (2-5 min)**: Lab overview, UI introduction, inventory system, HELIX interface
+3. **First Maintenance Task (5-8 min)**: Maintenance importance, circuit repair, resource gathering, storage
+4. **First Crop Planting (8-12 min)**: Crop importance, seed selection, planting process, growth explanation
+5. **First Harvest (12-15 min)**: Harvesting process, market introduction, profit calculation, first profit celebration
+6. **Basic Crafting (15-20 min)**: Crafting importance, station construction, recipe selection, crafting process
+7. **Bot Introduction (20-25 min)**: Bot concept, bot research, bot construction, bot assignment
+8. **Advanced Systems (25-30 min)**: Research system, room expansion, environmental control, progression overview
+
+### Safe Learning Environment
+
+- **No Resource Loss**: Tutorial mistakes don't consume resources
+- **Instant Completion**: Tutorial tasks complete instantly
+- **Unlimited Resources**: Tutorial provides unlimited materials
+- **Skip Options**: Players can skip tutorial sections
+- **Restart Options**: Players can restart tutorial at any time
 
 ### Help Systems
 
-- **Contextual Help**: "?" buttons on complex screens
+- **Contextual Help**: "?" buttons on complex screens, help appears when needed
 - **Recipe Browser**: Visual guide to all crafting possibilities
 - **Research Tree**: Clear indicators of what's unlocked next
 - **Grandfather's Guidance**: Dr. Zephyr Vex provides tips and mentorship
+- **HELIX Assistance**: Administrative AI provides contextual guidance and error diagnosis
 
 ## 15. Success Criteria
 

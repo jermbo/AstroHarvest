@@ -6,7 +6,7 @@
 flowchart TB
   UI["UI Layer<br/>(Pixi.js Rendering)"] <--> CONTROLLER["Game Controller"]
   CONTROLLER <--> STATE["Game State Manager"]
-  STATE <--> STORAGE["Persistence<br/>(IndexedDB / LocalStorage)"]
+  STATE <--> STORAGE["Persistence<br/>(IndexedDB)"]
   STATE <--> TIMERS["Timer Resolver"]
   STATE <--> CATALOG["Data Catalogs<br/>(crops, recipes, stations)"]
   CONTROLLER <--> ECONOMY["Economy & Balance Module"]
@@ -36,7 +36,7 @@ flowchart TB
    3. Syncs with persistence layer
 
 4. Persistence
-   1. IndexedDB (primary) with LocalStorage fallback
+   1. IndexedDB (primary storage system)
    2. Stores: player, plots, stations, jobs, inventory, flags
    3. Versioned schema with migrations
 
@@ -66,3 +66,6 @@ flowchart TB
 2. Separation of Concerns → UI handles visuals, State handles data, Controller mediates
 3. Offline-First → No background timers; compute progress on open
 4. Expandable → New crop = add JSON + art. No code rewrite
+5. Error-Resilient → Graceful handling of failures and player mistakes
+6. Performance-Optimized → Efficient rendering, memory management, and battery usage
+7. Save-Robust → Reliable persistence with error handling and recovery systems

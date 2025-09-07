@@ -35,7 +35,7 @@ Logger.getInstance().enableCompactMode();
 
 ```
 ℹ️ [GameService] → plant Successfully planted quantum_blueberry on plot_001
-⚠️ [StorageManager] → fallback_attempt Attempting LocalStorage fallback
+⚠️ [StorageManager] → save_error Storage save failed, retrying
 ```
 
 ### 3. **Standard Mode**
