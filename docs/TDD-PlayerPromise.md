@@ -34,7 +34,7 @@ stateDiagram-v2
 
 Intro popups:
 
-- Clean debris → gain wood/stone/minerals.
+- Clean debris → gain electronic components/power cells/minerals.
 - Buy seeds → plant → water.
 - First harvest triggers Jam Barrel tutorial.
 - Sell Jam → buy more seeds → build second station.

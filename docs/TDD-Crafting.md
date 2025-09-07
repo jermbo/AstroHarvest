@@ -33,7 +33,7 @@ flowchart TB
 	"id": "build.jam_barrel",
 	"display_name": "Build: Jam Barrel",
 	"category": "construction",
-	"inputs": { "wood": 8, "stone": 4, "minerals": 2 },
+	"inputs": { "electronic_components": 8, "power_cells": 4, "minerals": 2 },
 	"time_minutes": 2,
 	"result_station_id": "station.jam_barrel",
 	"unlocks": ["prod.jam"]
@@ -58,13 +58,13 @@ flowchart TB
 
 ### MVP Stations (Construction)
 
-| id                  | name        | inputs                       | time |
-| ------------------- | ----------- | ---------------------------- | ---- |
-| station.jam_barrel  | Jam Barrel  | wood×8, stone×4, minerals×2  | 2m   |
-| station.wine_barrel | Wine Barrel | wood×12, stone×6, minerals×3 | 3m   |
-| station.oven        | Oven        | stone×10, minerals×5         | 3m   |
-| station.smelter     | Smelter     | stone×12, minerals×8         | 4m   |
-| station.juicer      | Juicer      | wood×6, minerals×6           | 2m   |
+| id                           | name                 | inputs                                              | time |
+| ---------------------------- | -------------------- | --------------------------------------------------- | ---- |
+| station.bio_processor        | Bio-Processor        | electronic components×8, power cells×4, minerals×2  | 2m   |
+| station.fermentation_chamber | Fermentation Chamber | electronic components×12, power cells×6, minerals×3 | 3m   |
+| station.synthesis_unit       | Synthesis Unit       | electronic components×10, minerals×5                | 3m   |
+| station.molecular_forge      | Molecular Forge      | electronic components×12, minerals×8                | 4m   |
+| station.extraction_unit      | Extraction Unit      | electronic components×6, minerals×6                 | 2m   |
 
 ### MVP Production (5 crafts)
 

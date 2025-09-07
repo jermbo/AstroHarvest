@@ -2,102 +2,173 @@
 
 ## 1. Overview
 
-AstroHarvest is a humorous sci-fi idle farming game with a **16-bit pixel aesthetic**. Players farm alien crops, gather raw materials, craft tools and machines, and sell goods at the Intergalactic Market.
+AstroHarvest is a humorous sci-fi idle farming game with a **16-bit pixel aesthetic**. Players inherit their grandfather's agricultural research lab on the remote moon of New Eden, restore the aging facility, and help the struggling colony achieve food security through advanced vertical farming and bot automation.
 Target platform: **Web (mobile-first, offline by default)**.
 
 ## 2. Goals
 
 - Deliver a **fun-first MVP** that works in short play sessions.
-- Provide variety with **5 crops and 5 crafts** from day one.
+- Focus on the **plant → harvest → craft → sell** core loop with deep crafting system.
 - Implement **two-tier crafting**:
   1. **Construction Crafting** → building tools & machines.
   2. **Production Crafting** → using machines to process crops.
+- Create **meaningful progression** from manual labor to full automation.
+- Establish **family legacy story** with Dr. Zephyr Vex's mentorship.
+- Use **maintenance mechanics** as primary retention hook (circuit repair, bulb changes, tube cleaning).
 - Keep everything **offline and expandable**.
 
 ## 3. Core Gameplay Loop
 
-1. **Clean & Gather**
-   - Clear weeds, branches, and rocks from your farm.
-   - Collect raw resources: wood, stone, minerals.
+1. **Lab Maintenance & Repair**
+   - Fix broken circuits, replace burnt-out light bulbs, unclog nutrient tubes.
+   - Repair damaged power systems, clean air filters, calibrate sensors.
+   - Collect raw resources: electronic components, power cells, minerals.
+   - Restore lab functionality and unlock new capabilities.
 
-2. **Planting**
-   - Till soil with HoeBot.
-   - Plant seeds bought at the market.
-   - Optionally water crops for bonuses.
+2. **Research & Development**
+   - Research new bot types and farm technologies.
+   - Unlock higher pod levels and environmental systems.
+   - Plan automation progression and lab expansion.
 
-3. **Idle Growth**
+3. **Manual Farming (Early Game)**
+   - Plant seeds in vertical growing pods within lab domes.
+   - Water crops across multiple levels.
+   - Harvest mature crops manually.
+
+4. **Bot Construction & Automation**
+   - Start with HELIX (Administrative Bot) as your central hub for research and management.
+   - Build specialized farming bots for different tasks.
+   - Automate planting, watering, and harvesting.
+   - Manage bot energy and maintenance.
+
+5. **Idle Growth & Environmental Control**
    - Crops grow in real-world time.
-   - Growth speed depends on crop type and watering.
+   - Growth speed depends on crop type, watering, and environmental conditions.
+   - Manage climate, lighting, and nutrient systems within lab domes.
 
-4. **Harvesting**
-   - Collect grown crops.
-   - Harvest yields raw produce.
+6. **Crafting & Production**
+   - **Construction Crafting**: Build bio-processors, fermentation chambers, or synthesis units using electronic components, power cells, minerals.
+   - **Production Crafting**: Use those machines to turn crops into advanced goods (e.g., berries → nutrient concentrate).
 
-5. **Crafting**
-   - **Construction Crafting**: Build barrels, fermenters, or machines using wood, stone, minerals.
-   - **Production Crafting**: Use those machines to turn crops into goods (e.g., berries → jam).
-
-6. **Market Transactions**
+7. **Market Transactions**
    - Always-open market with fixed prices.
    - Sell goods for credits.
-   - Buy seeds, basic tools, and starter machines.
+   - Buy seeds, bot components, and research materials.
 
-7. **Expansion**
-   - Use credits/minerals to unlock more plots, machines, and eventually other planets.
+8. **Lab Expansion & Room Unlocking**
+   - Use credits/materials to unlock new dome rooms and specialized lab sections.
+   - Build additional domes for different crop types or environmental conditions.
+   - Research cross-planet technologies and advanced automation.
 
 ## 4. MVP Scope
 
+### Lab Dome System
+
+- **Main Lab Dome**: Starting location with basic growing pods and research facilities
+- **Room Unlocking**: Unlock specialized rooms (power room, water treatment, bot workshop)
+- **Dome Expansion**: Build additional domes for different crop types or environmental conditions
+- **Environmental Isolation**: Each dome can have different climate and growing conditions
+
+### Vertical Farm System
+
+- **Growing Pods**: 4-level vertical growing chambers within lab domes
+- **Environmental Control**: Basic climate, lighting, and nutrient systems
+- **Level Restrictions**: Crops have different level requirements based on size
+
 ### Crops (Seeds)
 
-- Quantum Blueberries
-- Strawboids
-- Plasmatoes
-- AstroGrapes
-- Nebula Wheat
+- **Quantum Blueberries** (2-4 levels, moderate growth)
+- **Strawboids** (1-3 levels, fast growth)
+- **Plasmatoes** (3-4 levels, slow growth, high value)
+- **AstroGrapes** (4 levels, tree-like, wine production)
+- **Nebula Wheat** (1-2 levels, compact, bread production)
+
+### Bot System
+
+- **Administrative Bot**: HELIX (your first bot) - purely administrative hub for research, inventory, messages, job board
+- **Farming Bot Types**: Planting, Watering, Harvesting, Maintenance
+- **Bot Construction**: Research → Materials → Build → Install
+- **Bot Upgrades**: Speed, efficiency, range, intelligence improvements
+
+### Research System
+
+- **Bot Technology**: Unlock new bot types and upgrades
+- **Lab Infrastructure**: Room unlocking, dome expansion, environmental systems
+- **Crop Science**: Yield optimization, environmental tolerance
+- **Automation**: Reduce manual intervention, improve efficiency
 
 ### Crafted Goods (Production Crafting)
 
-- Jam (berries → jam barrel).
-- Space Wine (grapes → wine barrel).
-- Bread (wheat → oven).
-- Mineral Blocks (minerals → smelter).
-- Fruit Juice (mixed fruits → juicer).
+- **Nutrient Concentrate** (berries → bio-processor)
+- **Fermentation Extract** (grapes → fermentation chamber)
+- **Protein Synthesis** (wheat → synthesis unit)
+- **Mineral Composites** (minerals → molecular forge)
+- **Vitamin Solution** (mixed fruits → extraction unit)
 
 ### Resources
 
-- **Credits** (currency).
-- **Wood / Stone / Minerals** (from clearing farm debris).
+- **Credits** (currency)
+- **Electronic Components** (from repairing lab equipment)
+- **Power Cells** (from restoring power systems)
+- **Minerals** (from lab maintenance and repair)
+- **Bot Components** (for bot construction and upgrades)
+- **Research Materials** (for unlocking new technologies)
 - **Seeds** (purchased at market).
 
 ### Tools
 
-- HoeBot-9000 (till soil).
-- Watering Can (boost crop growth).
-- Basic Axe (clear branches).
-- Pickaxe (break rocks, collect minerals).
-- Starter Miner (slowly generates minerals over time).
+- Circuit Repair Kit (fix broken lab equipment).
+- Power Restorer (restore damaged power systems).
+- Environmental Scanner (analyze growing conditions).
+- Bot Maintenance Kit (repair and upgrade bots).
+- Research Terminal (access scientific databases).
 
 ### Crafting Stations (Construction Crafting)
 
-- Jam Barrel.
-- Wine Barrel.
-- Oven.
-- Smelter.
-- Juicer.
+- Bio-Processor.
+- Fermentation Chamber.
+- Synthesis Unit.
+- Molecular Forge.
+- Extraction Unit.
 
-## 5. Progression & Timing
+## 5. Maintenance & Retention Mechanics
+
+### Lab Maintenance System
+
+- **Circuit Repair**: Fix broken electronic circuits and wiring systems
+- **Light Bulb Replacement**: Replace burnt-out LED grow lights and system lighting
+- **Nutrient Tube Cleaning**: Unclog blocked nutrient delivery tubes and pipes
+- **Power System Repair**: Restore damaged power generation and distribution
+- **Air Filter Cleaning**: Clean and replace air filtration systems
+- **Sensor Calibration**: Recalibrate environmental monitoring sensors
+- **Bot Maintenance**: Repair and maintain farming bot systems
+
+### Maintenance Progression
+
+- **Early Game**: Basic maintenance tasks with simple tools
+- **Mid Game**: Advanced maintenance with specialized equipment
+- **Late Game**: Automated maintenance systems with bot assistance
+
+### Retention Benefits
+
+- **Resource Gathering**: Maintenance provides materials for crafting and upgrades
+- **Lab Efficiency**: Well-maintained systems improve crop yields and growth speed
+- **Unlock Progression**: Some maintenance tasks unlock new lab capabilities
+- **Visual Satisfaction**: Clean, well-maintained lab feels rewarding
+
+## 6. Progression & Timing
 
 - **Early Crops**: 3–5 min growth (quick feedback).
 - **Mid Crops**: 30–60 min growth (idle loop).
 - **Advanced Crops**: Multi-hour growth (future expansion).
 - **Crafting**:
-  - Jam = ~15 min.
-  - Wine = ~2 hours.
-  - Bread = ~30 min.
-  - Smelting = ~1 hour.
-  - Juicing = ~20 min.
+  - Nutrient Concentrate = ~15 min.
+  - Vitamin Solution = ~20 min.
+  - Protein Synthesis = ~30 min.
+  - Mineral Composites = ~1 hour.
+  - Fermentation Extract = ~2 hours.
 
-## 6. Future Expansion Ideas
+## 7. Future Expansion Ideas
 
 - Multi-planet farming (unique climates, crops).
 - Special events (Farmers’ Markets, galactic fairs).
@@ -105,7 +176,7 @@ Target platform: **Web (mobile-first, offline by default)**.
 - Dynamic economy (price shifts, rare demand events).
 - Automation (robot helpers, conveyor belts).
 
-## 7. Tone & Aesthetic
+## 8. Tone & Aesthetic
 
 - **Visuals**: 16-bit cozy pixel art meets sci-fi absurdity.
 - **Humor**: Futurama-inspired dialogue, item names, and events.
@@ -114,14 +185,14 @@ Target platform: **Web (mobile-first, offline by default)**.
   - “Plasmato” crop: tomato that glows faintly radioactive.
   - NPC: Zorbulon the Pickle Baron, demanding weird goods.
 
-## 8. Technical Notes
+## 9. Technical Notes
 
 - **Tech stack**: HTML, CSS, JavaScript, Pixi.js.
 - **Save system**: IndexedDB (offline-first).
 - **UI**: Touch-friendly, bright retro buttons.
 - **Data-driven**: Crops, recipes, and tools defined in JSON for easy expansion.
 
-## 9. User Experience & Interface Design
+## 10. User Experience & Interface Design
 
 ### Core UX Principles
 
@@ -132,26 +203,55 @@ Target platform: **Web (mobile-first, offline by default)**.
 
 ### Key UI Screens
 
-1. **Farm View**: Main gameplay screen with 3x3 plot grid
+1. **Lab Dome View**: Main gameplay screen with vertical growing pods
 2. **Market Screen**: Buy/sell interface with clear pricing
-3. **Inventory Panel**: Organized by categories (seeds, crops, materials, goods)
-4. **Crafting Station**: Visual recipe browser with progress indicators
+3. **HELIX Interface**: Central hub for research, inventory, messages, and job board
+4. **Bot Workshop**: Bot construction and upgrade interface
 5. **Settings/Help**: Tutorial, audio controls, save management
 
 ### Visual Feedback Systems
 
-- **Particle Effects**: Dirt puffs when planting, sparkles when harvesting
-- **Progress Indicators**: Visual timers on plots and crafting stations
-- **Notification System**: Toast messages for achievements and errors
-- **Animation States**: Smooth transitions between plot states
+- **Particle Effects**: Circuit sparks when repairing, energy pulses when powering systems
+- **Progress Indicators**: Visual timers on growing pods and research projects
+- **Lab Assistant Messages**: Inbox system with messages from your lab assistant for achievements, alerts, and guidance
+- **Animation States**: Smooth transitions between pod states and bot actions
 
-## 10. Audio Design
+## 11. Lab Assistant System
+
+### Lab Assistant Character
+
+- **Name**: HELIX (Human-Enhanced Laboratory Intelligence eXecutive)
+- **Type**: Administrative Bot (your first bot)
+- **Personality**: Helpful, professional, slightly quirky AI assistant
+- **Role**: Purely administrative - manages research, inventory, messages, job board (no direct lab work)
+- **Voice**: Futurama-inspired humor with scientific professionalism
+
+### HELIX Administrative Interface
+
+- **Research Terminal**: Access to skill tree and technology research
+- **Inventory Management**: Organize and track all resources, materials, and goods
+- **Message Center**: Read and manage all lab communications and alerts
+- **Job Board**: Assign and track bot tasks and automation jobs (future feature)
+- **Progress Tracking**: Monitor research progress and lab efficiency
+- **Market Analysis**: Reports on market trends and trading opportunities
+- **Lab Status**: Overview of all lab systems and maintenance needs
+- **Note**: HELIX is purely administrative - she does not perform any direct lab work or farming tasks
+
+### Integration with Gameplay
+
+- **Contextual Messages**: Messages appear based on current lab state
+- **Progressive Guidance**: Messages become more advanced as player progresses
+- **Family Connection**: Messages occasionally reference Dr. Vex's wisdom
+- **Community Updates**: Messages about colony events and market changes
+- **Bot Progression**: HELIX's capabilities expand as you research better administrative systems
+
+## 12. Audio Design
 
 ### Sound Effects
 
-- **Action Sounds**: Planting (dirt thud), harvesting (pop), crafting (mechanical whir)
+- **Action Sounds**: Circuit repair (electronic beeps), bot activation (mechanical whir), harvesting (pop)
 - **UI Sounds**: Button clicks, menu transitions, notification chimes
-- **Environmental**: Subtle farm ambiance, space-themed background hum
+- **Environmental**: Subtle lab ambiance, space-themed background hum, bot movement sounds
 
 ### Audio Accessibility
 
@@ -159,7 +259,7 @@ Target platform: **Web (mobile-first, offline by default)**.
 - **Visual Alternatives**: Subtle screen flashes for audio cues
 - **Mute Options**: Complete audio disable for quiet environments
 
-## 11. Game Balance & Progression
+## 13. Game Balance & Progression
 
 ### Progression Curves
 
@@ -179,12 +279,12 @@ Target platform: **Web (mobile-first, offline by default)**.
 - **Idle Rewards**: 2+ hour offline time should provide substantial returns
 - **Crafting ROI**: Processed goods should be 1.6-2.2x more valuable than raw materials
 
-## 12. Onboarding & Tutorial Design
+## 14. Onboarding & Tutorial Design
 
 ### First-Time User Experience
 
-1. **Welcome Screen**: Brief game concept explanation
-2. **Interactive Tutorial**: Guided first crop planting
+1. **Welcome Screen**: Brief game concept explanation and family story introduction
+2. **Interactive Tutorial**: Guided first lab maintenance and crop planting
 3. **Progressive Hints**: Contextual tooltips for new features
 4. **Safe Learning**: No penalties for tutorial mistakes
 
@@ -192,15 +292,18 @@ Target platform: **Web (mobile-first, offline by default)**.
 
 - **Contextual Help**: "?" buttons on complex screens
 - **Recipe Browser**: Visual guide to all crafting possibilities
-- **Progress Tracking**: Clear indicators of what's unlocked next
+- **Research Tree**: Clear indicators of what's unlocked next
+- **Grandfather's Guidance**: Dr. Zephyr Vex provides tips and mentorship
 
-## 13. Success Criteria
+## 15. Success Criteria
 
 - MVP is **fun in short sessions (5–10 minutes)**.
-- Players always feel progress (crops grown, goods crafted).
-- Cleaning + planting + crafting loop feels satisfying.
+- Players always feel progress (crops grown, goods crafted, lab restored).
+- Lab maintenance + planting + crafting loop feels satisfying.
 - Systems are modular enough to expand without major refactoring.
-- **New players can complete first harvest within 2 minutes**.
-- **Audio feedback enhances satisfaction without being intrusive**.
-- **Mobile interface is fully functional on devices 320px+ wide**.
-- **Tutorial completion rate exceeds 80%**.
+- New players can complete first harvest within 2 minutes.
+- Audio feedback enhances satisfaction without being intrusive.
+- Mobile interface is fully functional on devices 320px+ wide.
+- Tutorial completion rate exceeds 80%.
+- Family story creates emotional investment and motivation.
+- Progression from manual to automated feels rewarding and strategic.

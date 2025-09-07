@@ -40,11 +40,11 @@
 
 ### Upgrade Costs Table
 
-| Upgrade     | Base Cost                    | Scale                      |
-| ----------- | ---------------------------- | -------------------------- |
-| New Plot    | 20 credits                   | ×2 per plot                |
-| Jam Barrel  | wood×8, stone×4, minerals×2  | +20% mats per extra barrel |
-| Wine Barrel | wood×12, stone×6, minerals×3 | +20% mats per barrel       |
+| Upgrade              | Base Cost                                           | Scale                         |
+| -------------------- | --------------------------------------------------- | ----------------------------- |
+| New Plot             | 20 credits                                          | ×2 per plot                   |
+| Bio-Processor        | electronic components×8, power cells×4, minerals×2  | +20% mats per extra processor |
+| Fermentation Chamber | electronic components×12, power cells×6, minerals×3 | +20% mats per chamber         |
 
 ## Example Economy Table (MVP)
 

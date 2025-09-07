@@ -42,7 +42,7 @@
 ### Resource Manipulation Requirements
 
 - **Credits**: Add or set specific credit amounts
-- **Materials**: Add or set wood, stone, minerals
+- **Materials**: Add or set electronic components, power cells, minerals
 - **Seeds**: Add or set quantities of all crop seeds
 - **Bulk Operations**: Give "starter resources" or "mid-game resources" instantly
 

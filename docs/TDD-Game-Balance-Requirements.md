@@ -52,7 +52,7 @@
 - **Plot 1-3**: Unlocked by default
 - **Plot 4-6**: Cost 20, 40, 80 credits respectively
 - **Basic Tools**: HoeBot-9000 (25 credits), Watering Can (15 credits)
-- **First Station**: Jam Barrel (wood×8, stone×4, minerals×2)
+- **First Station**: Bio-Processor (electronic components×8, power cells×4, minerals×2)
 
 ### Mid Game (30 minutes - 2 hours)
 
@@ -62,7 +62,7 @@
 
 - **Mixed Timers**: 5m, 30m, 45m, 60m crops available
 - **Crafting Introduction**: Production vs raw selling decisions
-- **Resource Management**: Wood, stone, minerals become important
+- **Resource Management**: Electronic components, power cells, minerals become important
 - **Station Expansion**: Multiple crafting stations available
 
 #### Balance Target Requirements
@@ -122,7 +122,7 @@
 
 ### Resource Economy Requirements
 
-- **Material Sources**: Wood, stone, minerals must be obtainable through gameplay
+- **Material Sources**: Electronic components, power cells, minerals must be obtainable through gameplay
 - **Material Usage**: Construction and upgrades must require reasonable material amounts
 - **Resource Balance**: No single resource should be disproportionately difficult to obtain
 - **Scarcity Management**: Resources must be scarce enough to create meaningful choices

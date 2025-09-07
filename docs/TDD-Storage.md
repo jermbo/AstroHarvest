@@ -109,8 +109,8 @@ erDiagram
 	],
 	"inventory": [
 		{ "item_id": "seed.quantum_blueberry", "qty": 4 },
-		{ "item_id": "wood", "qty": 12 },
-		{ "item_id": "stone", "qty": 6 }
+		{ "item_id": "electronic_components", "qty": 12 },
+		{ "item_id": "power_cells", "qty": 6 }
 	],
 	"jobs": []
 }
