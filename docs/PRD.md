@@ -121,9 +121,86 @@ Target platform: **Web (mobile-first, offline by default)**.
 - **UI**: Touch-friendly, bright retro buttons.
 - **Data-driven**: Crops, recipes, and tools defined in JSON for easy expansion.
 
-## 9. Success Criteria
+## 9. User Experience & Interface Design
+
+### Core UX Principles
+
+- **Mobile-First**: Touch-friendly interface with 44px minimum touch targets
+- **Immediate Feedback**: Every action provides visual/audio confirmation
+- **Progressive Disclosure**: Show complexity gradually as players advance
+- **Offline-First**: Seamless experience without internet connection
+
+### Key UI Screens
+
+1. **Farm View**: Main gameplay screen with 3x3 plot grid
+2. **Market Screen**: Buy/sell interface with clear pricing
+3. **Inventory Panel**: Organized by categories (seeds, crops, materials, goods)
+4. **Crafting Station**: Visual recipe browser with progress indicators
+5. **Settings/Help**: Tutorial, audio controls, save management
+
+### Visual Feedback Systems
+
+- **Particle Effects**: Dirt puffs when planting, sparkles when harvesting
+- **Progress Indicators**: Visual timers on plots and crafting stations
+- **Notification System**: Toast messages for achievements and errors
+- **Animation States**: Smooth transitions between plot states
+
+## 10. Audio Design
+
+### Sound Effects
+
+- **Action Sounds**: Planting (dirt thud), harvesting (pop), crafting (mechanical whir)
+- **UI Sounds**: Button clicks, menu transitions, notification chimes
+- **Environmental**: Subtle farm ambiance, space-themed background hum
+
+### Audio Accessibility
+
+- **Volume Controls**: Master, SFX, and music sliders
+- **Visual Alternatives**: Subtle screen flashes for audio cues
+- **Mute Options**: Complete audio disable for quiet environments
+
+## 11. Game Balance & Progression
+
+### Progression Curves
+
+- **Early Game (0-30 min)**: Fast feedback, 5-minute crops, immediate rewards
+- **Mid Game (30 min-2 hours)**: Introduction of crafting, 30-60 minute timers
+- **Late Game (2+ hours)**: Complex recipes, multi-hour investments, automation
+
+### Retention Mechanics
+
+- **Daily Rewards**: Bonus credits for returning players
+- **Achievement System**: Unlock new crops/recipes through milestones
+- **Collection Goals**: "Harvest 100 Quantum Blueberries" type challenges
+
+### Balance Targets
+
+- **Session Value**: Each 5-minute session should yield meaningful progress
+- **Idle Rewards**: 2+ hour offline time should provide substantial returns
+- **Crafting ROI**: Processed goods should be 1.6-2.2x more valuable than raw materials
+
+## 12. Onboarding & Tutorial Design
+
+### First-Time User Experience
+
+1. **Welcome Screen**: Brief game concept explanation
+2. **Interactive Tutorial**: Guided first crop planting
+3. **Progressive Hints**: Contextual tooltips for new features
+4. **Safe Learning**: No penalties for tutorial mistakes
+
+### Help Systems
+
+- **Contextual Help**: "?" buttons on complex screens
+- **Recipe Browser**: Visual guide to all crafting possibilities
+- **Progress Tracking**: Clear indicators of what's unlocked next
+
+## 13. Success Criteria
 
 - MVP is **fun in short sessions (5–10 minutes)**.
 - Players always feel progress (crops grown, goods crafted).
 - Cleaning + planting + crafting loop feels satisfying.
 - Systems are modular enough to expand without major refactoring.
+- **New players can complete first harvest within 2 minutes**.
+- **Audio feedback enhances satisfaction without being intrusive**.
+- **Mobile interface is fully functional on devices 320px+ wide**.
+- **Tutorial completion rate exceeds 80%**.
