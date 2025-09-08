@@ -1,26 +1,19 @@
-import { Application, Graphics, Text, TextStyle } from "pixi.js";
+import { AstroHarvestGame } from "@/game/astro-harvest-game";
 
+// Initialize the AstroHarvest game
 (async () => {
-	const app = new Application();
-	await app.init({
-		background: "#1099bb",
-		resizeTo: window,
-	});
-	app.canvas.style.position = "absolute";
+	try {
+		const game = new AstroHarvestGame();
+		await game.initialize();
 
-	const rectangle = new Graphics()
-		.rect(0, 0, 100, 100)
-		.fill({ color: 0x0042da });
-	app.stage.addChild(rectangle);
+		console.log("AstroHarvest game initialized successfully!");
+		console.log(
+			"Press Cmd+Shift+D (Mac) or Ctrl+Shift+D (Windows/Linux) to toggle dev tools"
+		);
 
-	const textStyle = new TextStyle({
-		fontSize: 24,
-		fontWeight: "bold",
-		fill: 0x000000,
-	});
-	const text = new Text({ text: "Hello, World!", style: textStyle });
-	app.stage.addChild(text);
-
-	// Append the canvas to the container
-	document.getElementById("pixi-container")!.appendChild(app.canvas);
+		// Make game globally accessible for debugging
+		(window as any).game = game;
+	} catch (error) {
+		console.error("Failed to initialize AstroHarvest game:", error);
+	}
 })();
