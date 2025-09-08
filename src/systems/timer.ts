@@ -26,6 +26,14 @@ export class TimerSystem {
 				return plot;
 			}
 
+			// Transition from "planted" to "growing" immediately
+			if (plot.status === "planted") {
+				return {
+					...plot,
+					status: "growing" as const,
+				};
+			}
+
 			const remainingTime = this.timers.get(plot.id) || 0;
 			const newRemainingTime = Math.max(0, remainingTime - deltaTime);
 
@@ -56,7 +64,7 @@ export class TimerSystem {
 		}
 
 		const effectiveOfflineTime = offlineTimeMs * timeMultiplier;
-		const growthProgress = effectiveOfflineTime / (plot.crop.growthTime * 1000);
+		const growthProgress = effectiveOfflineTime / plot.crop.growthTime; // growthTime is already in milliseconds
 
 		if (growthProgress >= 1) {
 			return {

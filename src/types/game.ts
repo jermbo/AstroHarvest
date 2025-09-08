@@ -21,10 +21,16 @@ export interface CropState {
 export interface CropDefinition {
 	id: string;
 	displayName: string;
-	growthMinutes: number;
+	growthMinutes: number; // Can be fractional (e.g., 0.5 for 30 seconds)
 	buyPrice: number;
 	sellPriceRaw: number;
 	yield: { min: number; max: number };
+	visual: {
+		seedColor: string;
+		harvestColor: string;
+		harvestShape: "berries" | "root" | "fruit" | "vegetable";
+		harvestPosition: "above_ground" | "below_ground";
+	};
 }
 
 export interface PlayerState {

@@ -108,8 +108,7 @@ export class SaveSystem {
 
 			const timeMultiplier = gameState.devTools.timeMultiplier;
 			const effectiveOfflineTime = offlineTimeMs * timeMultiplier;
-			const growthProgress =
-				effectiveOfflineTime / (plot.crop.growthTime * 1000);
+			const growthProgress = effectiveOfflineTime / plot.crop.growthTime; // growthTime is already in milliseconds
 
 			if (growthProgress >= 1) {
 				return {

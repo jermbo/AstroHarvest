@@ -1,5 +1,6 @@
 import { Graphics, Text, TextStyle, Container } from "pixi.js";
 import type { PlotState } from "@/types/game";
+import { getCropDefinition } from "@/data/crops";
 
 // Visual component for a single plot
 export class PlotComponent extends Container {
@@ -69,18 +70,16 @@ export class PlotComponent extends Container {
 		this.plotGraphics.clear();
 		this.progressBar.clear();
 
-		// Draw plot background based on status
-		const colors: Record<string, number> = {
-			empty: 0x8b4513, // Brown
-			planted: 0x654321, // Dark brown
-			growing: 0x228b22, // Forest green
-			ready: 0xffd700, // Gold
-		};
-
+		// Draw plot background (always brown soil)
 		this.plotGraphics
 			.rect(0, 0, 64, 64)
-			.fill({ color: colors[this.plotState.status] })
+			.fill({ color: 0x8b4513 }) // Brown soil
 			.stroke({ color: 0x000000, width: 2 });
+
+		// Draw crop visual stages
+		if (this.plotState.crop) {
+			this.drawCropVisualStage();
+		}
 
 		// Draw progress bar for growing crops
 		if (this.plotState.status === "growing" && this.plotState.crop) {
@@ -105,14 +104,64 @@ export class PlotComponent extends Container {
 		this.updateStatusText();
 	}
 
+	private drawCropVisualStage(): void {
+		if (!this.plotState.crop) return;
+
+		const progress = this.calculateGrowthProgress();
+		const centerX = 32;
+		const centerY = 32;
+		const cropType = this.plotState.crop.type;
+
+		// Simple growing dot from 3px to 40px over time
+		this.drawGrowingDot(centerX, centerY, cropType, progress);
+	}
+
+	private drawGrowingDot(
+		centerX: number,
+		centerY: number,
+		cropType: string,
+		progress: number
+	): void {
+		const cropDefinition = getCropDefinition(cropType);
+		const harvestColor = cropDefinition
+			? parseInt(cropDefinition.visual.harvestColor)
+			: 0x4169e1;
+
+		// Calculate dot size: 3px at 0% progress, 40px at 100% progress
+		const minSize = 3;
+		const maxSize = 40;
+		const dotSize = minSize + progress * (maxSize - minSize);
+
+		// Draw the growing dot
+		this.plotGraphics
+			.circle(centerX, centerY, dotSize)
+			.fill({ color: harvestColor, alpha: 0.8 })
+			.stroke({ color: 0x000000, width: 1 });
+	}
+
 	private calculateGrowthProgress(): number {
-		if (!this.plotState.crop || this.plotState.status !== "growing") {
+		if (!this.plotState.crop) {
 			return 0;
 		}
 
-		const elapsed = Date.now() - this.plotState.plantedAt!;
-		const total = this.plotState.crop.growthTime * 1000;
-		return Math.min(elapsed / total, 1);
+		// For planted status, show 0% progress
+		if (this.plotState.status === "planted") {
+			return 0;
+		}
+
+		// For growing status, calculate actual progress
+		if (this.plotState.status === "growing") {
+			const elapsed = Date.now() - this.plotState.plantedAt!;
+			const total = this.plotState.crop.growthTime; // Already in milliseconds
+			return Math.min(elapsed / total, 1);
+		}
+
+		// For ready status, show 100% progress
+		if (this.plotState.status === "ready") {
+			return 1;
+		}
+
+		return 0;
 	}
 
 	private updateStatusText(): void {
@@ -128,10 +177,18 @@ export class PlotComponent extends Container {
 			case "growing":
 				if (this.plotState.crop) {
 					const remaining =
-						this.plotState.crop.growthTime * 1000 -
+						this.plotState.crop.growthTime -
 						(Date.now() - this.plotState.plantedAt!);
-					const minutes = Math.ceil(remaining / 60000);
-					this.statusText.text = `${minutes}m`;
+
+					if (remaining > 60000) {
+						// Show minutes if more than 1 minute
+						const minutes = Math.ceil(remaining / 60000);
+						this.statusText.text = `${minutes}m`;
+					} else {
+						// Show seconds if less than 1 minute
+						const seconds = Math.ceil(remaining / 1000);
+						this.statusText.text = `${seconds}s`;
+					}
 					this.statusText.style.fill = 0xffffff;
 				}
 				break;

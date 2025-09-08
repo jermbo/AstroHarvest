@@ -10,7 +10,7 @@ export class DevToolsConsole extends Container {
 	private containerDiv!: HTMLDivElement;
 	private gameStateManager: GameStateManager;
 	private isVisible: boolean = false;
-	private toggleButton!: Graphics;
+	private toggleButton!: Container;
 	private isAnimating: boolean = false;
 
 	constructor(gameStateManager: GameStateManager) {
@@ -59,15 +59,20 @@ export class DevToolsConsole extends Container {
 	}
 
 	private createToggleButton(): void {
-		this.toggleButton = new Graphics();
-		this.toggleButton
-			.rect(0, 0, 60, 30)
-			.fill({ color: 0x00ff00, alpha: 0.8 })
-			.stroke({ color: 0xffffff, width: 1 });
+		// Create container for toggle button
+		this.toggleButton = new Container();
 		this.toggleButton.y = -40;
 		this.toggleButton.interactive = true;
 		this.toggleButton.cursor = "pointer";
 		this.updateToggleButtonPosition();
+
+		// Create background graphics
+		const buttonBackground = new Graphics();
+		buttonBackground
+			.rect(0, 0, 60, 30)
+			.fill({ color: 0x00ff00, alpha: 0.8 })
+			.stroke({ color: 0xffffff, width: 1 });
+		this.toggleButton.addChild(buttonBackground);
 
 		// Add toggle text
 		const toggleText = new Text({

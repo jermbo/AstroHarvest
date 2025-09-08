@@ -155,7 +155,6 @@ export class AstroHarvestGame {
 					} else {
 						this.devToolsConsole?.hide();
 					}
-					console.log("Dev tools toggled:", devTools.enabled);
 				}
 			}
 		});
@@ -206,24 +205,25 @@ export class AstroHarvestGame {
 	}
 
 	private plantCrop(plotId: string, cropDefinition: any): void {
+		const growthTimeMs = cropDefinition.growthMinutes * 60 * 1000; // Convert fractional minutes to milliseconds
 		const cropState: CropState = {
 			id: `${plotId}_crop_${Date.now()}`,
 			type: cropDefinition.id,
 			plantedAt: Date.now(),
-			growthTime: cropDefinition.growthMinutes * 60, // Convert to seconds
+			growthTime: growthTimeMs, // Store in milliseconds
 			watered: false,
 			waterBonus: 0,
 		};
 
 		this.gameStateManager.updatePlot(plotId, (plot) => {
 			plot.crop = cropState;
-			plot.status = "planted";
+			plot.status = "growing"; // Start growing immediately
 			plot.plantedAt = Date.now();
-			plot.growthTime = cropState.growthTime;
+			plot.growthTime = growthTimeMs;
 		});
 
 		// Start timer for this plot
-		this.timerSystem.startTimer(plotId, cropState.growthTime * 1000);
+		this.timerSystem.startTimer(plotId, growthTimeMs);
 
 		// Update visual
 		const plotComponent = this.plotComponents.get(plotId);

@@ -11,9 +11,11 @@ export class GameStateManager {
 	private createInitialState(): GameState {
 		return {
 			player: {
-				credits: 10, // Start with 10 credits
+				credits: 50, // Start with 50 credits to afford new crops
 				seeds: {
 					"crop.quantum_blueberry": 3, // Start with 3 seeds
+					"crop.stellar_strawberry": 1, // Start with 1 seed
+					"crop.cosmic_carrot": 1, // Start with 1 seed
 				},
 				xp: 0,
 				level: 1,

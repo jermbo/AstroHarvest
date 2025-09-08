@@ -1,0 +1,44 @@
+[
+	{
+		"id": "crop.quantum_blueberry",
+		"display_name": "Quantum Blueberries",
+		"growth_minutes": 0.5,
+		"buy_price": 5,
+		"sell_price_raw": 8,
+		"yield": { "min": 1, "max": 2 },
+		"visual": {
+			"seed_color": "0x8b4513",
+			"harvest_color": "0x4169e1",
+			"harvest_shape": "berries",
+			"harvest_position": "above_ground"
+		}
+	},
+	{
+		"id": "crop.stellar_strawberry",
+		"display_name": "Stellar Strawberries",
+		"growth_minutes": 1,
+		"buy_price": 12,
+		"sell_price_raw": 20,
+		"yield": { "min": 2, "max": 3 },
+		"visual": {
+			"seed_color": "0xff6347",
+			"harvest_color": "0xff0000",
+			"harvest_shape": "berries",
+			"harvest_position": "above_ground"
+		}
+	},
+	{
+		"id": "crop.cosmic_carrot",
+		"display_name": "Cosmic Carrots",
+		"growth_minutes": 1.5,
+		"buy_price": 25,
+		"sell_price_raw": 45,
+		"yield": { "min": 1, "max": 2 },
+		"visual": {
+			"seed_color": "0xffa500",
+			"harvest_color": "0xffa500",
+			"harvest_shape": "root",
+			"harvest_position": "below_ground"
+		}
+	}
+]
