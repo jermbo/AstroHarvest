@@ -1,11 +1,18 @@
-import type { GameState, SaveData } from "@/types/game";
+import type { GameState, SaveData, PlayerState, PlotState } from "@/types/game";
 
-// Save system using IndexedDB for persistence
+// Save system using IndexedDB with separate object stores for different data types
 export class SaveSystem {
 	private dbName = "AstroHarvest";
 	private dbVersion = 1;
-	private storeName = "gameSaves";
 	private db: IDBDatabase | null = null;
+
+	// Separate object stores for different data types
+	private stores = {
+		player: "player",
+		plots: "plots",
+		settings: "settings",
+		metadata: "metadata",
+	};
 
 	public async initialize(): Promise<void> {
 		return new Promise((resolve, reject) => {
@@ -22,8 +29,19 @@ export class SaveSystem {
 
 			request.onupgradeneeded = (event) => {
 				const db = (event.target as IDBOpenDBRequest).result;
-				if (!db.objectStoreNames.contains(this.storeName)) {
-					db.createObjectStore(this.storeName, { keyPath: "id" });
+
+				// Create separate object stores for different data types
+				if (!db.objectStoreNames.contains(this.stores.player)) {
+					db.createObjectStore(this.stores.player, { keyPath: "id" });
+				}
+				if (!db.objectStoreNames.contains(this.stores.plots)) {
+					db.createObjectStore(this.stores.plots, { keyPath: "id" });
+				}
+				if (!db.objectStoreNames.contains(this.stores.settings)) {
+					db.createObjectStore(this.stores.settings, { keyPath: "key" });
+				}
+				if (!db.objectStoreNames.contains(this.stores.metadata)) {
+					db.createObjectStore(this.stores.metadata, { keyPath: "key" });
 				}
 			};
 		});
@@ -40,21 +58,46 @@ export class SaveSystem {
 				return;
 			}
 
-			const saveData: SaveData = {
-				gameState,
-				version: "0.1.0",
-				timestamp: Date.now(),
-			};
+			const transaction = this.db.transaction(
+				[
+					this.stores.player,
+					this.stores.plots,
+					this.stores.settings,
+					this.stores.metadata,
+				],
+				"readwrite"
+			);
 
-			const transaction = this.db.transaction([this.storeName], "readwrite");
-			const store = transaction.objectStore(this.storeName);
-			const request = store.put({ id: "main", ...saveData });
+			// Save player data
+			const playerStore = transaction.objectStore(this.stores.player);
+			playerStore.put({ id: "main", ...gameState.player });
 
-			request.onsuccess = () => {
+			// Save plots data
+			const plotsStore = transaction.objectStore(this.stores.plots);
+			gameState.plots.forEach((plot) => {
+				plotsStore.put(plot);
+			});
+
+			// Save settings (dev tools state)
+			const settingsStore = transaction.objectStore(this.stores.settings);
+			settingsStore.put({ key: "devTools", value: gameState.devTools });
+
+			// Save metadata
+			const metadataStore = transaction.objectStore(this.stores.metadata);
+			metadataStore.put({
+				key: "gameInfo",
+				value: {
+					lastSaveTime: gameState.lastSaveTime,
+					version: "2.0.0",
+					timestamp: Date.now(),
+				},
+			});
+
+			transaction.oncomplete = () => {
 				resolve(true);
 			};
 
-			request.onerror = () => {
+			transaction.onerror = () => {
 				reject(new Error("Failed to save game"));
 			};
 		});
@@ -71,27 +114,93 @@ export class SaveSystem {
 				return;
 			}
 
-			const transaction = this.db.transaction([this.storeName], "readonly");
-			const store = transaction.objectStore(this.storeName);
-			const request = store.get("main");
+			const transaction = this.db.transaction(
+				[
+					this.stores.player,
+					this.stores.plots,
+					this.stores.settings,
+					this.stores.metadata,
+				],
+				"readonly"
+			);
 
-			request.onsuccess = () => {
-				const result = request.result;
-				if (result && result.gameState) {
-					// Calculate offline progress
-					const offlineTime = Date.now() - result.timestamp;
-					const gameState = this.calculateOfflineProgress(
-						result.gameState,
-						offlineTime
-					);
-					resolve(gameState);
-				} else {
-					resolve(null);
+			let playerData: PlayerState | null = null;
+			let plotsData: PlotState[] = [];
+			let devToolsData: any = null;
+			let metadata: any = null;
+			let completedRequests = 0;
+			const totalRequests = 4;
+
+			const checkComplete = () => {
+				completedRequests++;
+				if (completedRequests === totalRequests) {
+					if (playerData && devToolsData && metadata) {
+						// Calculate offline progress
+						const offlineTime = Date.now() - metadata.value.timestamp;
+						const gameState: GameState = {
+							player: playerData,
+							plots: plotsData,
+							lastSaveTime: metadata.value.lastSaveTime,
+							devTools: devToolsData,
+						};
+
+						const updatedGameState = this.calculateOfflineProgress(
+							gameState,
+							offlineTime
+						);
+						resolve(updatedGameState);
+					} else {
+						resolve(null);
+					}
 				}
 			};
 
-			request.onerror = () => {
-				reject(new Error("Failed to load game"));
+			// Load player data
+			const playerStore = transaction.objectStore(this.stores.player);
+			const playerRequest = playerStore.get("main");
+			playerRequest.onsuccess = () => {
+				playerData = playerRequest.result;
+				checkComplete();
+			};
+			playerRequest.onerror = () => {
+				reject(new Error("Failed to load player data"));
+			};
+
+			// Load plots data
+			const plotsStore = transaction.objectStore(this.stores.plots);
+			const plotsRequest = plotsStore.getAll();
+			plotsRequest.onsuccess = () => {
+				plotsData = plotsRequest.result;
+				checkComplete();
+			};
+			plotsRequest.onerror = () => {
+				reject(new Error("Failed to load plots data"));
+			};
+
+			// Load settings data
+			const settingsStore = transaction.objectStore(this.stores.settings);
+			const settingsRequest = settingsStore.get("devTools");
+			settingsRequest.onsuccess = () => {
+				devToolsData = settingsRequest.result?.value || {
+					enabled: false,
+					timeMultiplier: 1,
+					timersPaused: false,
+				};
+				checkComplete();
+			};
+			settingsRequest.onerror = () => {
+				reject(new Error("Failed to load settings data"));
+			};
+
+			// Load metadata
+			const metadataStore = transaction.objectStore(this.stores.metadata);
+			const metadataRequest = metadataStore.get("gameInfo");
+			metadataRequest.onsuccess = () => {
+				metadata = metadataRequest.result;
+				checkComplete();
+			};
+			metadataRequest.onerror = () => {
+				reject(new Error("Failed to load metadata"));
 			};
 		});
 	}
@@ -163,16 +272,69 @@ export class SaveSystem {
 				return;
 			}
 
-			const transaction = this.db.transaction([this.storeName], "readwrite");
-			const store = transaction.objectStore(this.storeName);
-			const request = store.delete("main");
+			const transaction = this.db.transaction(
+				[
+					this.stores.player,
+					this.stores.plots,
+					this.stores.settings,
+					this.stores.metadata,
+				],
+				"readwrite"
+			);
 
-			request.onsuccess = () => {
+			// Clear all object stores
+			const playerStore = transaction.objectStore(this.stores.player);
+			playerStore.clear();
+
+			const plotsStore = transaction.objectStore(this.stores.plots);
+			plotsStore.clear();
+
+			const settingsStore = transaction.objectStore(this.stores.settings);
+			settingsStore.clear();
+
+			const metadataStore = transaction.objectStore(this.stores.metadata);
+			metadataStore.clear();
+
+			transaction.oncomplete = () => {
 				resolve(true);
 			};
 
-			request.onerror = () => {
+			transaction.onerror = () => {
 				reject(new Error("Failed to delete save"));
+			};
+		});
+	}
+
+	public async clearAllData(): Promise<boolean> {
+		if (!this.db) {
+			await this.initialize();
+		}
+
+		return new Promise((resolve, reject) => {
+			if (!this.db) {
+				reject(new Error("Database not initialized"));
+				return;
+			}
+
+			// Close current database connection
+			this.db.close();
+
+			// Delete the entire database
+			const deleteRequest = indexedDB.deleteDatabase(this.dbName);
+
+			deleteRequest.onsuccess = () => {
+				console.log("Database cleared successfully");
+				this.db = null;
+				resolve(true);
+			};
+
+			deleteRequest.onerror = () => {
+				reject(new Error("Failed to clear database"));
+			};
+
+			deleteRequest.onblocked = () => {
+				console.warn("Database deletion blocked - please close other tabs");
+				reject(new Error("Database deletion blocked"));
 			};
 		});
 	}

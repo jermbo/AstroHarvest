@@ -1,8 +1,10 @@
 import type { GameState, PlayerState, PlotState } from "@/types/game";
+import type { SaveSystem } from "./save-system";
 
 // Game state management system
 export class GameStateManager {
 	private state: GameState;
+	public saveSystem?: SaveSystem;
 
 	constructor() {
 		this.state = this.createInitialState();
@@ -17,6 +19,7 @@ export class GameStateManager {
 					"crop.stellar_strawberry": 1, // Start with 1 seed
 					"crop.cosmic_carrot": 1, // Start with 1 seed
 				},
+				inventory: {}, // Start with empty inventory
 				xp: 0,
 				level: 1,
 			},
@@ -106,6 +109,18 @@ export class GameStateManager {
 			this.state.player.level = newLevel;
 		}
 		this.state.lastSaveTime = Date.now();
+	}
+
+	public addToInventory(itemId: string, quantity: number): void {
+		if (!this.state.player.inventory[itemId]) {
+			this.state.player.inventory[itemId] = 0;
+		}
+		this.state.player.inventory[itemId] += quantity;
+		this.state.lastSaveTime = Date.now();
+	}
+
+	public getInventory(): Record<string, number> {
+		return this.state.player.inventory;
 	}
 
 	public getDevTools() {

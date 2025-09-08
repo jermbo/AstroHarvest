@@ -2,7 +2,7 @@
 	{
 		"id": "crop.quantum_blueberry",
 		"display_name": "Quantum Blueberries",
-		"growth_minutes": 0.5,
+		"growth_minutes": 0.2,
 		"buy_price": 5,
 		"sell_price_raw": 8,
 		"yield": { "min": 1, "max": 2 },

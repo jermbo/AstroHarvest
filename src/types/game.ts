@@ -36,6 +36,7 @@ export interface CropDefinition {
 export interface PlayerState {
 	credits: number;
 	seeds: Record<string, number>;
+	inventory: Record<string, number>; // Harvested items
 	xp: number;
 	level: number;
 }

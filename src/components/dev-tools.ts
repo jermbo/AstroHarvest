@@ -228,6 +228,8 @@ export class DevToolsConsole extends Container {
 				this.resetTimers();
 			} else if (command === "show_state()") {
 				this.showState();
+			} else if (command === "clear_database()") {
+				this.clearDatabase();
 			} else if (command === "help()") {
 				this.showHelp();
 			} else {
@@ -291,6 +293,23 @@ export class DevToolsConsole extends Container {
 		this.log(`Dev Tools: ${state.devTools.enabled ? "enabled" : "disabled"}`);
 	}
 
+	private async clearDatabase(): Promise<void> {
+		try {
+			// Get the save system from the game state manager
+			const saveSystem = (this.gameStateManager as any).saveSystem;
+			if (saveSystem && saveSystem.clearAllData) {
+				await saveSystem.clearAllData();
+				this.log(
+					"Database cleared successfully! Refresh the page to start fresh."
+				);
+			} else {
+				this.log("Error: Save system not available");
+			}
+		} catch (error) {
+			this.log(`Error clearing database: ${error}`);
+		}
+	}
+
 	private showHelp(): void {
 		this.log("Available Commands:");
 		this.log("• add_credits(amount) - Add credits");
@@ -300,6 +319,7 @@ export class DevToolsConsole extends Container {
 		this.log("• pause_timers() - Pause all timers");
 		this.log("• reset_timers() - Reset timer multiplier");
 		this.log("• show_state() - Show current game state");
+		this.log("• clear_database() - Clear all save data");
 		this.log("• help() - Show this help");
 	}
 

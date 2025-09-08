@@ -8,6 +8,7 @@ export class PlayerStatsUI extends Container {
 	private xpText: Text;
 	private levelText: Text;
 	private seedsText: Text;
+	private inventoryText: Text;
 
 	constructor() {
 		super();
@@ -62,6 +63,17 @@ export class PlayerStatsUI extends Container {
 		this.seedsText.y = 75;
 		this.addChild(this.seedsText);
 
+		this.inventoryText = new Text({
+			text: "Inventory: 0",
+			style: new TextStyle({
+				fontSize: 14,
+				fill: 0xffffff,
+			}),
+		});
+		this.inventoryText.x = 10;
+		this.inventoryText.y = 95;
+		this.addChild(this.inventoryText);
+
 		this.updateBackground();
 	}
 
@@ -77,6 +89,13 @@ export class PlayerStatsUI extends Container {
 		);
 		this.seedsText.text = `Seeds: ${totalSeeds}`;
 
+		// Calculate total inventory items
+		const totalInventory = Object.values(player.inventory).reduce(
+			(sum, count) => sum + count,
+			0
+		);
+		this.inventoryText.text = `Inventory: ${totalInventory}`;
+
 		this.updateBackground();
 	}
 
@@ -86,7 +105,7 @@ export class PlayerStatsUI extends Container {
 		// Calculate background size based on content
 		const padding = 10;
 		const width = Math.max(200, this.creditsText.width + padding * 2);
-		const height = 100;
+		const height = 120; // Increased to accommodate inventory text
 
 		this.background
 			.rect(0, 0, width, height)

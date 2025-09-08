@@ -29,6 +29,7 @@ export class AstroHarvestGame {
 		this.gameStateManager = new GameStateManager();
 		this.timerSystem = new TimerSystem();
 		this.saveSystem = new SaveSystem();
+		this.gameStateManager.saveSystem = this.saveSystem;
 	}
 
 	public async initialize(): Promise<void> {
@@ -258,6 +259,9 @@ export class AstroHarvestGame {
 					(cropDefinition.yield.max - cropDefinition.yield.min + 1)
 			) + cropDefinition.yield.min;
 
+		// Add harvested items to inventory
+		this.gameStateManager.addToInventory(plot.crop.type, yieldAmount);
+
 		// Add credits and XP
 		const creditsEarned = yieldAmount * cropDefinition.sellPriceRaw;
 		this.gameStateManager.addCredits(creditsEarned);
@@ -280,6 +284,8 @@ export class AstroHarvestGame {
 			const updatedPlot = this.gameStateManager.getPlot(plotId);
 			if (updatedPlot) {
 				plotComponent.updatePlotState(updatedPlot);
+				// Add harvest flash effect
+				this.addHarvestFlashEffect(plotComponent);
 			}
 		}
 
@@ -290,6 +296,17 @@ export class AstroHarvestGame {
 		console.log(
 			`Harvested ${yieldAmount} ${cropDefinition.displayName} for ${creditsEarned} credits!`
 		);
+	}
+
+	private addHarvestFlashEffect(plotComponent: any): void {
+		// Simple flash effect by temporarily changing the plot's alpha
+		const originalAlpha = plotComponent.alpha;
+		plotComponent.alpha = 0.3; // Flash to low alpha
+
+		// Restore alpha after a short delay
+		setTimeout(() => {
+			plotComponent.alpha = originalAlpha;
+		}, 150);
 	}
 
 	private updateSeedModal(): void {
