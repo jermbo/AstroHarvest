@@ -55,10 +55,21 @@ Your grandfather, Dr. Zephyr Vex, is retiring and passing his agricultural resea
 
 ## 📋 Documentation
 
-- **[Development Roadmap](./ROADMAP.md)** - Version timeline, milestones, and success metrics
-- **[Development Backlog](./DEVELOPMENT_BACKLOG.md)** - Detailed feature breakdown
-- **[Storage System Upgrade](./docs/STORAGE-SYSTEM-UPGRADE.md)** - Advanced persistence documentation
-- **[T-001 Implementation Summary](./docs/T-001-IMPLEMENTATION-SUMMARY.md)** - Core system implementation details
+### **Modular Development Roadmaps**
+
+- **[MVP Core Loop Roadmap](./backlog/mvp-core-loop-roadmap.md)** - Manual → Idle → Harvest → Profit loop with dev tools
+- **[Bots & Progression Roadmap](./backlog/bots-progression-roadmap.md)** - Automation and advancement systems
+- **[Jobs & NPC Foundation Roadmap](./backlog/jobs-npc-foundation-roadmap.md)** - Community and task management
+- **[Storyline & Narrative Roadmap](./backlog/storyline-narrative-roadmap.md)** - Family legacy and colony restoration story
+- **[Integration Guide](./backlog/modular-roadmap-integration-guide.md)** - How to combine roadmaps for development
+
+### **Technical Documentation**
+
+- **[Game Architecture](./docs/TDD-GameArchitecture.md)** - Core system architecture and design
+- **[Dev Tools System](./docs/TDD-DevTools-System.md)** - In-game debugging and testing tools
+- **[Storage System Upgrade](./docs/TDD-StorageSystemUpgrade.md)** - Advanced persistence documentation
+- **[Performance Optimization](./docs/TDD-Performance-Optimization-Requirements.md)** - Mobile optimization and performance
+- **[Player Progression System](./docs/TDD-Player-Progression-System.md)** - XP, levels, and advancement mechanics
 
 ## Side Goals for the App
 
